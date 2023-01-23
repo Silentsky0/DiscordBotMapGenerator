@@ -1,0 +1,4 @@
+.idea/*
+__pycache__/*
+your_map.png
+entities.json
