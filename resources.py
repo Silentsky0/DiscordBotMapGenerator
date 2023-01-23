@@ -23,7 +23,16 @@ textures = [
     ("assets/textures/stone_bricks_tileable.png", "Stone bricks"),
     ("assets/textures/smooth_stone_tileable.png", "Smooth stone"),
     ("assets/textures/dark_smooth_stone_tileable.png", "Dark smooth stone"),
-    ("assets/textures/dark_smooth_stone_with_puddle_tileable.png", "Dark smooth stone with puddle")
+    ("assets/textures/dark_smooth_stone_with_puddle_tileable.png", "Dark smooth stone with puddle"),
+    ("assets/textures/Cobblestone.jpg", "Cobblestone"),
+    ("assets/textures/Grass_Marsh.jpg", "Grass marsh"),
+    ("assets/textures/Rectangular_Tiles.jpg", "Rectangular tiles"),
+    ("assets/textures/Rock_Ground_01.jpg", "Rock ground A"),
+    ("assets/textures/Rock_Ground_02.jpg", "Rock ground B"),
+    ("assets/textures/Rock_Texture_01.jpg", "Rock texture A"),
+    ("assets/textures/Rock_Texture_02.jpg", "Rock texture B"),
+    ("assets/textures/Rock_Tiles_Mossy.jpg", "Rock tiles mossy"),
+    ("assets/textures/Square_Cobblestone.jpg", "Square cobblestone")
 ]
 entities = [
     ("assets/entities/player.png", "Player spawn point", 1),

@@ -2,6 +2,8 @@ import json
 import numpy as np
 from tkinter import *
 
+import pygame
+
 from resources import *
 
 
@@ -157,14 +159,35 @@ while not done:
                 while not added:
                     mouse = pygame.mouse.get_pos()
 
+                    draw_preview_name = ''
+                    draw_preview_index = 0
                     for i, t in enumerate(available_tiles):
                         if posX <= mouse[0] < posX + option_w \
                                 and posY + option_h * i <= mouse[1] < posY + option_h * (i + 1):
                             pygame.draw.rect(screen, options_hover,
                                              pygame.Rect(posX, posY + option_h * i, option_w, option_h))
+                            draw_preview_name = t[1]
+                            draw_preview_index = i
                         else:
                             pygame.draw.rect(screen, options_color,
                                              pygame.Rect(posX, posY + option_h * i, option_w, option_h))
+
+                    # draw texture preview
+                    if draw_preview_name != '' and posX + option_w + 6 * option_h < screen_width:
+                        pygame.draw.rect(screen, options_color, pygame.Rect(posX + option_w, posY, 6 * option_h,
+                                                                            option_h * len(available_tiles) + 5 * option_h))
+                        texture = pygame.pixelcopy.make_surface(
+                            cv.resize(tile_mapper[draw_preview_name], (6 * option_h, 6 * option_h), interpolation=cv.INTER_AREA))
+                        screen.blit(texture, (posX + option_w, posY + option_h * draw_preview_index, 6 * option_h, 6 * option_h))
+                    elif draw_preview_name != '':
+                        pygame.draw.rect(screen, options_color,
+                                         pygame.Rect(posX - 6 * option_h, posY, 6 * option_h,
+                                                     option_h * len(available_tiles) + 5 * option_h))
+                        texture = pygame.pixelcopy.make_surface(
+                            cv.resize(tile_mapper[draw_preview_name], (6 * option_h, 6 * option_h),
+                                      interpolation=cv.INTER_AREA))
+                        screen.blit(texture,
+                                    (posX - 6 * option_h, posY + option_h * draw_preview_index, 6 * option_h, 6 * option_h))
 
                     for ev2 in pygame.event.get():
                         if ev2.type == pygame.QUIT:
